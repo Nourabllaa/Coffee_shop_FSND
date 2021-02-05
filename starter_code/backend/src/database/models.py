@@ -6,7 +6,6 @@ import json
 database_filename = "database.db"
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
-
 db = SQLAlchemy()
 
 '''
@@ -48,7 +47,10 @@ class Drink(db.Model):
     '''
     def short(self):
         print(json.loads(self.recipe))
-        short_recipe = [{'color': r['color'], 'parts': r['parts']} for r in json.loads(self.recipe)]
+        short_recipe = [{'color': 
+        json.loads(self.recipe)
+        ['color'], 'parts': json.loads(self.recipe)
+         ['parts']}]
         return {
             'id': self.id,
             'title': self.title,
