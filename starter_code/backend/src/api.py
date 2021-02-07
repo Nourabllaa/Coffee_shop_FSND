@@ -39,7 +39,6 @@ def get_drinks():
             drinks_list.append(drink.short())
         
         ## use other way 
-        
         return jsonify({
                 'success': True,
                 'drinks': drinks_list,
@@ -97,7 +96,6 @@ def post_drink(payload):
                 recipe =json.dumps(body.get('recipe'))
                 )
         drink.insert()
-        
         return jsonify({
             'success': True,
             'drinks': drink.long(),
