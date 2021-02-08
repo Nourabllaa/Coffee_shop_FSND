@@ -98,7 +98,7 @@ def post_drink(payload):
             abort(404)
         drink=Drink(
                 title=body.get('title'),
-                recipe=json.dumps(body.get('recipe'))
+                recipe=json.dumps(body.get('recipe')),
                 )
         drink.insert()
         return jsonify({
@@ -128,9 +128,13 @@ def post_drink(payload):
 def patch_drink(payload, id):
     try:
         drink=Drink.query.filter_by(id=id).one_or_none()
-
         if drink is None:
-            abort(404)
+            return json.dumps({
+                'success':
+                False,
+                'error':
+                'Drink #' + id + ' not found to be edited'
+            }), 404
 
         body=request.get_json()
         title=body.get('title')
